@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class controller {
 
-    @RequestMapping("/git")
+    @RequestMapping("/email")
     public String testGit(){
+    
         return "git";
     }
 }

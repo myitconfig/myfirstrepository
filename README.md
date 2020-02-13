@@ -1,2 +1,1 @@
-# gc-github-repository
-你好
+我的第一个仓库

@@ -44,5 +44,6 @@ logging:
   pattern:
     console: "%clr(%d{yyyy.MM.dd HH:mm:ss}){faint} %clr([%5p]) %clr(%-50.80logger{50}){cyan} %clr(:){faint} %m%n"
 
-
-
+email:
+  model:
+    name: mail.ftl

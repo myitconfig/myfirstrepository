@@ -13,7 +13,9 @@ class GitdemoApplicationTests {
 
     @Test
     void contextLoads() {
-        this.javaMailComponent.sendMail("1357604648@qq.com");
+
+        this.javaMailComponent.sendMail("861106704@qq.com");
+
     }
 
 }

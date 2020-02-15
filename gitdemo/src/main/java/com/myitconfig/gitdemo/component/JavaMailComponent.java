@@ -1,5 +1,8 @@
 package com.myitconfig.gitdemo.component;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -17,15 +20,11 @@ import java.util.Map;
 @Component
 @EnableConfigurationProperties(MailProperties.class)
 public class JavaMailComponent {
-    //绑定一个ftl模板
-    private static final String template = "mail.ftl";
-
+    private static final Logger log= LoggerFactory.getLogger(JavaMailComponent.class);
+    private @Value("${email.model.name}")String template ; //绑定一个ftl模板
     private final FreeMarkerConfigurer freeMarkerConfigurer;
-
     private final JavaMailSender javaMailSender;
-
     private final MailProperties mailProperties;
-
     public JavaMailComponent(FreeMarkerConfigurer freeMarkerConfigurer, JavaMailSender javaMailSender, MailProperties mailProperties) {
         this.freeMarkerConfigurer = freeMarkerConfigurer;
         this.javaMailSender = javaMailSender;
@@ -33,58 +32,47 @@ public class JavaMailComponent {
     }
 
     /**
-     * 传入参数
-     * @param email
+     * @param email 传入一个邮箱地址
      */
     public void sendMail(String email) {
         Map<String, Object> map = new HashMap<>();
         map.put("email", email);
         try {
-            // 获取.ftl模板
-            String text = this.getTextByTemplate(template, map);
-            // 将信息和模板传入send方法处理
-            this.send(email, text);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                    String text = this.getTextByTemplate(template, map); // 获取.ftl模板
+                    this.send(email, text); // 将信息和模板传入send方法处理
+                    log.warn("发送成功!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                   log.warn("发送失败!");
+                }
     }
 
     /**
-     * 获取发送的模板
-     * @param template
-     * @param model
-     * @return
-     * @throws Exception
+     * @param template 这是邮件模板.ftl
+     * @param model 这是要给model
+     * @return 返回的模板
+     * @throws Exception 抛出异常
      */
     private String getTextByTemplate(String template, Map<String, Object> model) throws Exception {
-        return FreeMarkerTemplateUtils
-                .processTemplateIntoString(this.freeMarkerConfigurer.getConfiguration().getTemplate(template), model);
+        return FreeMarkerTemplateUtils.processTemplateIntoString(this.freeMarkerConfigurer.getConfiguration().getTemplate(template), model);
     }
 
     /**
-     * 将模板和邮件信息存放并发送
-     * @param email
-     * @param text
-     * @throws MessagingException
-     * @throws UnsupportedEncodingException
+     * @param email email地址
+     * @param text 模板
+     * @throws MessagingException 异常
+     * @throws UnsupportedEncodingException 异常
      */
     private void send(String email, String text) throws MessagingException, UnsupportedEncodingException {
-        //创建并格式化信息
-        MimeMessage message = this.javaMailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-        //设置发件人标签
-        InternetAddress from = new InternetAddress();
-        from.setAddress(this.mailProperties.getUsername());
-        from.setPersonal("Java记", "UTF-8");
-        //添加标签
-        helper.setFrom(from);
-        //添加收件人
-        helper.setTo(email);
-        //添加主题
-        helper.setSubject("SpringBoot 发送的第二封邮件");
-        //添加模板
-        helper.setText(text, true);
-        //发送信息
-        this.javaMailSender.send(message);
+        MimeMessage message = this.javaMailSender.createMimeMessage();//创建信息
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");//格式化信息
+        InternetAddress from = new InternetAddress();  //设置发件人标签
+        from.setAddress(this.mailProperties.getUsername());//发件人邮箱地址
+        from.setPersonal("少不经事", "UTF-8");//发件人昵称
+        helper.setFrom(from); //添加标签
+        helper.setTo(email); //添加收件人
+        helper.setSubject("你好耿志"); //添加主题
+        helper.setText(text, true); //添加模板
+        this.javaMailSender.send(message); //发送信息
     }
 }

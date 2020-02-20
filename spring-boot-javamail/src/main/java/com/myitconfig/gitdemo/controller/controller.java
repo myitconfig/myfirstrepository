@@ -8,7 +8,7 @@ public class controller {
 
     @RequestMapping("/email")
     public String testGit(){
-    
+        
         return "git";
     }
 }

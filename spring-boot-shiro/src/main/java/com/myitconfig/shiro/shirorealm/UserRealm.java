@@ -1,4 +1,4 @@
-package com.myitconfig.shiro.realm;
+package com.myitconfig.shiro.shirorealm;
 
 import com.myitconfig.shiro.pojo.PermissionBean;
 import com.myitconfig.shiro.pojo.RoleBean;

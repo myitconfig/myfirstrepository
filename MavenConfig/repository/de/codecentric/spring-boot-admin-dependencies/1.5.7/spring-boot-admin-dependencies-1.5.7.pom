@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>de.codecentric</groupId>
+  <artifactId>spring-boot-admin-dependencies</artifactId>
+  <version>1.5.7</version>
+  <packaging>pom</packaging>
+  <name>Spring Boot Admin Dependencies</name>
+  <description>Spring Boot Admin Dependencies</description>
+  <url>https://github.com/codecentric/spring-boot-admin/spring-boot-admin-dependencies/</url>
+  <organization>
+    <name>codecentric AG</name>
+    <url>http://www.codecentric.de</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Johannes Edmeier</name>
+      <email>johannes.edmeier@codecentric.de</email>
+      <organization>codecentric AG</organization>
+    </developer>
+    <developer>
+      <name>Thomas Bosch</name>
+      <email>thomas.bosch@codecentric.de</email>
+      <organization>codecentric AG</organization>
+    </developer>
+    <developer>
+      <name>Dennis Schulte</name>
+      <email>dennis.schulte@codecentric.de</email>
+      <organization>codecentric AG</organization>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/codecentric/spring-boot-admin.git/spring-boot-admin-dependencies</connection>
+    <developerConnection>scm:git:ssh://git@github.com/codecentric/spring-boot-admin.git/spring-boot-admin-dependencies</developerConnection>
+    <url>https://github.com/codecentric/spring-boot-admin/spring-boot-admin-dependencies</url>
+  </scm>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-client</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui-activiti</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui-hystrix</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui-login</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-server-ui-turbine</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-starter-client</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-starter-client</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-starter-server</artifactId>
+        <version>1.5.7</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

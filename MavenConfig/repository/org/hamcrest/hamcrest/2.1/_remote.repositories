@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Feb 07 14:45:54 CST 2020
+hamcrest-2.1.jar>alimaven=
+hamcrest-2.1.pom>alimaven=
+hamcrest-2.1-sources.jar>alimaven=

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Feb 05 19:10:00 CST 2020
+tomcat-jdbc-8.5.27.jar>alimaven=
+tomcat-jdbc-8.5.27.pom>alimaven=
+tomcat-jdbc-8.5.27-sources.jar>alimaven=

@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Feb 04 14:47:59 CST 2020
+groovy-2.4.13.jar>alimaven=
+groovy-2.4.13.pom>alimaven=
+groovy-2.4.13-sources.jar>alimaven=

@@ -24,6 +24,6 @@ public class MyEndpointConfigure extends ServerEndpointConfig.Configurator imple
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-            MyEndpointConfigure.context=applicationContext;
+        MyEndpointConfigure.context = applicationContext;
     }
 }

@@ -1,159 +1,166 @@
 import java.util.Arrays;
 
-public class SortEight{
-	// Ö±½Ó²åÈëÅÅĞò
-	public static int[] insertSort(int[] strArr){
-			for (int i = 1;i < strArr.length;i++) {
-				for (int j = i-1;j >= 0 ;j-- ) {
-					if (strArr[j+1] < strArr[j]) {
-						int temp = strArr[j+1];
-						strArr[j+1] = strArr[j];
-						strArr[j] = temp;
-					}
-				}
-			}
-			return strArr;
-	}
-//Ñ¡ÔñÅÅĞò
-	public static int[] selectSort(int[] intArr){
-		for (int i=0;i<intArr.length-1 ;i++ ) {
-			for (int j=i+1;j<intArr.length ;j++ ) {
-				if (intArr[i] < intArr[j]) {
-					int temp = intArr[j];
-					intArr[j] = intArr[i];
-					intArr[i] = temp;
-				}
-			}
-		}
-		return intArr;
-	}
-//Ã°ÅİÅÅĞò
-	public static void mpSort(int[] intArr){
-		for (int i=0;i<intArr.length-1 ;i++ ) {
-			boolean flag=true;
-			for (int j=0;j<intArr.length-1-i ;j++ ) {
-				if (intArr[j] < intArr[j+1]) {
-					int temp = intArr[j+1];
-					intArr[j+1] = intArr[j];
-					intArr[j] = temp;
-					flag=false;
-				}
-			}
-			if (flag) {break;}
-		}
-		System.out.println(Arrays.toString(intArr));
-	}
-	//¿ìËÙÅÅĞò
-public static int[] quikSort(int[] list,int left,int right) {
-        //left<rightÊÇÓÃÀ´ÅĞ¶ÏÁ½±ßµÄË÷ÒıÊÇ·ñ»¹ÔÚ×ß£¬Èç¹ûÏàµÈÁËËµÃ÷²»ÄÜ¼ÌĞøÅÅĞò¾Í½áÊøÁË¡£Í¬Ê±Ò²ÊÇ×óÓÒÎ»ÖÃµÄÒ»¸ö±ê¼Ç¡£
-        if(left<right) {
-            //»ñÈ¡Ë÷ÒıÎ»ÖÃ
-            int point=divider(list, left, right);
-            //µİ¹éÅÅĞò×óÓÒË÷ÒıÁ½±ßµÄÊı×é
-            quikSort(list, left, point-1);
-            quikSort(list, point+1, right);
+public class SortEight {
+    // Ö±ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public static int[] insertSort(int[] strArr) {
+        for (int i = 1; i < strArr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (strArr[j + 1] < strArr[j]) {
+                    int temp = strArr[j + 1];
+                    strArr[j + 1] = strArr[j];
+                    strArr[j] = temp;
+                }
+            }
         }
-		return list;
+        return strArr;
     }
-    //ÅÅĞò²¢·µ»Ø±¾ÂÖµÄË÷ÒıÎ»ÖÃ
-    public static int divider(int[] list,int left,int right) {
-        int pair=list[left];
-        //³ÖĞøÑ­»·ÖªµÀÁ½±ßµÄË÷ÒıÏàÓö£¬Ò²¾ÍÊÇ²éÍêÁËÊı×éµÄËùÓĞÔªËØ£¬¾Í½áÊø£¬·µ»Øµ±Ç°µÄË÷ÒıÎ»ÖÃ¡£
-        while(left<right) {
-            //ÏÈ´ÓÓÒ±ß¿ªÊ¼²éÕÒ£¬ÕÒµ½±È»ù×¼ÔªËØpairĞ¡µÄ¾ÍÍ£Ö¹£¬µ±È»ÕâÀï´Ó×ó»¹ÊÇ´ÓÓÒ¿ªÊ¼¶¼ÊÇ¿ÉĞĞµÄ¡£
-            while(left<right&&list[right]>=pair) {
+
+    //Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public static int[] selectSort(int[] intArr) {
+        for (int i = 0; i < intArr.length - 1; i++) {
+            for (int j = i + 1; j < intArr.length; j++) {
+                if (intArr[i] < intArr[j]) {
+                    int temp = intArr[j];
+                    intArr[j] = intArr[i];
+                    intArr[i] = temp;
+                }
+            }
+        }
+        return intArr;
+    }
+
+    //Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public static void mpSort(int[] intArr) {
+        for (int i = 0; i < intArr.length - 1; i++) {
+            boolean flag = true;
+            for (int j = 0; j < intArr.length - 1 - i; j++) {
+                if (intArr[j] < intArr[j + 1]) {
+                    int temp = intArr[j + 1];
+                    intArr[j + 1] = intArr[j];
+                    intArr[j] = temp;
+                    flag = false;
+                }
+            }
+            if (flag) {
+                break;
+            }
+        }
+        System.out.println(Arrays.toString(intArr));
+    }
+
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public static int[] quikSort(int[] list, int left, int right) {
+        //left<rightï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½Í¬Ê±Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ãµï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ç¡ï¿½
+        if (left < right) {
+            //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+            int point = divider(list, left, right);
+            //ï¿½İ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½
+            quikSort(list, left, point - 1);
+            quikSort(list, point + 1, right);
+        }
+        return list;
+    }
+
+    //ï¿½ï¿½ï¿½ò²¢·ï¿½ï¿½Ø±ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+    public static int divider(int[] list, int left, int right) {
+        int pair = list[left];
+        //ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã¡ï¿½
+        while (left < right) {
+            //ï¿½È´ï¿½ï¿½Ò±ß¿ï¿½Ê¼ï¿½ï¿½ï¿½Ò£ï¿½ï¿½Òµï¿½ï¿½È»ï¿½×¼Ôªï¿½ï¿½pairĞ¡ï¿½Ä¾ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½Ò¿ï¿½Ê¼ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ĞµÄ¡ï¿½
+            while (left < right && list[right] >= pair) {
                 right--;
             }
             swap(list, left, right);
-            //²éÕÒ×ó±ß£¬ÕÒµ½±È»ù×¼ÔªËØ´óµÄ¾ÍÍ£Ö¹£¬È»ºó½»»»Êı¾İ¡£
-            while(left<right&&list[left]<=pair) {
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½Òµï¿½ï¿½È»ï¿½×¼Ôªï¿½Ø´ï¿½Ä¾ï¿½Í£Ö¹ï¿½ï¿½È»ï¿½ó½»»ï¿½ï¿½ï¿½ï¿½İ¡ï¿½
+            while (left < right && list[left] <= pair) {
                 left++;
             }
             swap(list, left, right);
         }
         return left;
     }
-    //½»»»Î»ÖÃ
-    public static void swap(int[] list,int a,int b) {
-        if(list!=null&&list.length>0) {
-            int mm=list[a];
-            list[a]=list[b];
-            list[b]=mm;
+
+    //ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+    public static void swap(int[] list, int a, int b) {
+        if (list != null && list.length > 0) {
+            int mm = list[a];
+            list[a] = list[b];
+            list[b] = mm;
         }
     }
 
-public static int[] heapsort(int[] list) {
-        //ÕâÀïµÚÒ»¸ö¸¸½ÚµãÎ»ÖÃlength/2-1,È»ºóÇ°ÃæµÄËùÓĞ½Úµã¶¼ÊÇ¸¸½Úµã¡£ÕâÑùË³Ğò½øĞĞ¶Ñ´¦Àí£¬Éú³É×î´ó»ò×îĞ¡¶Ñ
-        for(int i=list.length/2-1;i>=0;i--) {
-            heapAjust(list,i,list.length);
+    public static int[] heapsort(int[] list) {
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Î»ï¿½ï¿½length/2-1,È»ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ½Úµã¶¼ï¿½Ç¸ï¿½ï¿½Úµã¡£ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½Ğ¶Ñ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¡ï¿½ï¿½
+        for (int i = list.length / 2 - 1; i >= 0; i--) {
+            heapAjust(list, i, list.length);
         }
-        //½»»»Ä©Î²ÔªËØÓëµÚÒ»¸öÔªËØ£¬½»»»¹ıºó¶ÔµÚÒ»¸öÔªËØ´¦ÀíÒ»´Î£¬ÕâÑùÓÖ±ä³ÉÁËÒ»¸ö¶Ñ£¬È»ºó¼ÌĞøÑ­»·ÖªµÀ½áÊø
-        for(int i=list.length-1;i>0;i--) {
+        //ï¿½ï¿½ï¿½ï¿½Ä©Î²Ôªï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½Ò»ï¿½ï¿½Ôªï¿½Ø´ï¿½ï¿½ï¿½Ò»ï¿½Î£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ñ£ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        for (int i = list.length - 1; i > 0; i--) {
             swap(list, i, 0);
-            //ÕâÀïµÄ³¤¶ÈÎªiÊÇÒòÎªÒÑ¾­ÅÅĞòºÃµÄÔªËØ²»ÔÚ´¦ÀíËü£¬Èç¹û´¦ÀíÁËÅÅĞò¾Í»áÂÒµô
+            //ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Îªiï¿½ï¿½ï¿½ï¿½Îªï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ôªï¿½Ø²ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Òµï¿½
             heapAjust(list, 0, i);
         }
         return list;
     }
+
     /**
-     * 
-     * @param parent ¸¸ÔªËØÎ»ÖÃ
-     * @param length Êı×é³¤¶È
+     * @param parent ï¿½ï¿½Ôªï¿½ï¿½Î»ï¿½ï¿½
+     * @param length ï¿½ï¿½ï¿½é³¤ï¿½ï¿½
      */
     private static void heapAjust(int[] list, int parent, int length) {
-        //»ñÈ¡µ±Ç°¸¸ÔªËØµÄÖµ
-        int temp=list[parent];
-        //¶ÔÓÚÍêÈ«¶ş²æÊ÷¸¸ÔªËØµÄ×óº¢×ÓÎ»ÖÃÊÇµ±Ç°Î»ÖÃ*2+1
-        int leftchild=parent*2+1;
-        //ÕâÀïleftchild<lengthµÄ×÷ÓÃÊÇÅĞ¶Ïµ±Ç°µÄ¸¸ÔªËØµÄ×óº¢×ÓÊÇ·ñ´æÔÚ£¬³¬³öÁËlengthÒ²¾ÍÊÇ²»´æÔÚÁËÑ­»·ÖÕÖ¹
-        while(leftchild<length) {
-            //ÅĞ¶ÏÓĞÎŞÓÒº¢×Ó£¬Èç¹ûÓĞ²¢ÇÒ×óº¢×ÓµÄÖµĞ¡ÓÚÓÒº¢×Ó¾ÍÈÃ×óº¢×ÓË÷ÒıÖ¸ÏòÓÒº¢×Ó¡£ÕâÀïµÄ×óº¢×ÓË÷ÒıÆäÊµ¾ÍÊÇµ±Ç°Öµ½Ï´óÖµµÃÒ»¸öË÷Òı
-            //Ò²¾ÍÊÇÒ»¸ö±ê¼Ç£¬²»±ØÔÚÒâÆäÃû³Æ¡£Àí½âÁËÕâÒ»µã¾ÍÎÊÌâ¾Í¼òµ¥ÁË¡£ÕâÀïµÄ´óĞ¡±È½ÏÓÃÓÚÅÅĞòË³Ğò´¦Àí¡£
-            if((leftchild+1)<length&&list[leftchild]<list[leftchild+1]) {
+        //ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½Ôªï¿½Øµï¿½Öµ
+        int temp = list[parent];
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½Çµï¿½Ç°Î»ï¿½ï¿½*2+1
+        int leftchild = parent * 2 + 1;
+        //ï¿½ï¿½ï¿½ï¿½leftchild<lengthï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶Ïµï¿½Ç°ï¿½Ä¸ï¿½Ôªï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lengthÒ²ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ö¹
+        while (leftchild < length) {
+            //ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òºï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½Ğ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ÖµĞ¡ï¿½ï¿½ï¿½Òºï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Òºï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Çµï¿½Ç°Öµï¿½Ï´ï¿½Öµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            //Ò²ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ë¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ğ¡ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½
+            if ((leftchild + 1) < length && list[leftchild] < list[leftchild + 1]) {
                 leftchild++;
             }
-            //ÔÚ×Ó½ÚµãÖĞÕÒµ½ÁË¸ü´óµÄÖµ£¬ÏÂÃæµ±È»¾ÍÊÇºÍ¸¸ÔªËØ×ö±È½ÏÁË£¬Èç¹û¸¸ÔªËØ´óÖ±½ÓÌø³öÑ­»·ÒòÎª²»ĞèÒª½øĞĞÊı¾İ½»»»
-            if(temp>=list[leftchild]) {
+            //ï¿½ï¿½ï¿½Ó½Úµï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½æµ±È»ï¿½ï¿½ï¿½ÇºÍ¸ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø´ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ½ï¿½ï¿½ï¿½
+            if (temp >= list[leftchild]) {
                 break;
             }
-            //·ñÔò½øĞĞÊı¾İ½»»»£¬²¢¼ÌĞøÍù×ÓÊ÷ÅĞ¶ÏÊÇ·ñÂú×ã¶ÑµÄÌõ¼ş¡£
-            list[parent]=list[leftchild];
-            parent=leftchild;
-            leftchild=parent*2+1;
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            list[parent] = list[leftchild];
+            parent = leftchild;
+            leftchild = parent * 2 + 1;
         }
-        //ÕâÀïµÄparentÊµ¼ÊÉÏÒÑ¾­±ä³ÉÁË×Ó½Úµã¡£ËùÒÔĞèÒª½«Ô­¸¸½ÚµãµÄÖµ¸³Öµ¸øËü¡£
-        list[parent]=temp;
+        //ï¿½ï¿½ï¿½ï¿½ï¿½parentÊµï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµã¡£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ô­ï¿½ï¿½ï¿½Úµï¿½ï¿½Öµï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        list[parent] = temp;
     }
 
-public static void main(String[] args) {
-	int[] a=new int[40000];
-        for(int i=0;i<a.length;i++) {
-            a[i]=(int) (Math.random()*400000);
+    public static void main(String[] args) {
+        int[] a = new int[40000];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = (int) (Math.random() * 400000);
         }
-        double start=System.currentTimeMillis();
-        //Ö±½Ó²åÈë440ms
-		// System.out.println(Arrays.toString(insertSort(a)));
-		//Ñ¡Ôñ1038ms
-		// System.out.println(Arrays.toString(selectSort(a)));
-		//Ã°Åİ1050ms
-		// mpSort(a);
-		//¿ìËÙÅÅĞò14ms
+        double start = System.currentTimeMillis();
+        //Ö±ï¿½Ó²ï¿½ï¿½ï¿½440ms
+        // System.out.println(Arrays.toString(insertSort(a)));
+        //Ñ¡ï¿½ï¿½1038ms
+        // System.out.println(Arrays.toString(selectSort(a)));
+        //Ã°ï¿½ï¿½1050ms
+        // mpSort(a);
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½14ms
         // System.out.println(Arrays.toString(quikSort(a,0,a.length-1)));
         //5ms
         // quikSort(a,0,a.length-1);
-        //¶ÑÅÅĞò14ms
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½14ms
         // System.out.println(Arrays.toString(heapsort(a)));
         //5ms
         // heapsort(a);
-        double end=System.currentTimeMillis();
-        System.out.println(end-start+"ms");
-	int[] strArr={1,8,7,6,5,4,3,2,10,654,8,3464,32};
-	//Ö±½Ó²åÈë0.7
-	// System.out.println(Arrays.toString(insertSort(strArr)));
-	//Ñ¡Ôñ0.8s
-	// System.out.println(Arrays.toString(selectSort(strArr)));
-	//Ã°Åİ0.7s
-	// mpSort(strArr);
-	//¿ìËÙÅÅĞò0.6s	
-}
+        double end = System.currentTimeMillis();
+        System.out.println(end - start + "ms");
+        int[] strArr = {1, 8, 7, 6, 5, 4, 3, 2, 10, 654, 8, 3464, 32};
+        //Ö±ï¿½Ó²ï¿½ï¿½ï¿½0.7
+        // System.out.println(Arrays.toString(insertSort(strArr)));
+        //Ñ¡ï¿½ï¿½0.8s
+        // System.out.println(Arrays.toString(selectSort(strArr)));
+        //Ã°ï¿½ï¿½0.7s
+        // mpSort(strArr);
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0.6s
+    }
 }

@@ -8,6 +8,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,18 +18,18 @@ public class DruidConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource druid(){
+    public DataSource druid() {
         DruidDataSource dataSource = new DruidDataSource();
         return dataSource;
     }
 
     @Bean
-    public ServletRegistrationBean statViewServlet(){
+    public ServletRegistrationBean statViewServlet() {
         ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
-        Map<String,String> initParams = new HashMap<>();
+        Map<String, String> initParams = new HashMap<>();
         // druid后台管理员用户
-        initParams.put("loginUsername","admin");
-        initParams.put("loginPassword","123456");
+        initParams.put("loginUsername", "admin");
+        initParams.put("loginPassword", "123456");
         // 是否能够重置数据
         initParams.put("resetEnable", "false");
 
@@ -37,15 +38,15 @@ public class DruidConfig {
     }
 
     @Bean
-    public FilterRegistrationBean webStatFilter(){
+    public FilterRegistrationBean webStatFilter() {
         FilterRegistrationBean bean = new FilterRegistrationBean(new WebStatFilter());
         // 添加过滤规则
         bean.addUrlPatterns("/*");
-        Map<String,String> initParams = new HashMap<>();
+        Map<String, String> initParams = new HashMap<>();
         // 忽略过滤格式
-        initParams.put("exclusions","*.js, *.css, *.icon, *.png, *.jpg, /druid/*");
+        initParams.put("exclusions", "*.js, *.css, *.icon, *.png, *.jpg, /druid/*");
         bean.setInitParameters(initParams);
-        return  bean;
+        return bean;
     }
 
 }

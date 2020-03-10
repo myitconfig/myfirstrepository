@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     @RequestMapping("/user/index")
-    public String add(HttpServletRequest request){
+    public String add(HttpServletRequest request) {
         UserBean bean = (UserBean) SecurityUtils.getSubject().getPrincipal();
         request.setAttribute("userName", bean.getName());
         return "/user/index";
     }
 
     @RequestMapping("/vip/index")
-    public String update(){
+    public String update() {
         return "/vip/index";
     }
 }

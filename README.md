@@ -1,1 +1,1 @@
-sortEight<<经典算法>>
+更新springboot整合rabbitmq

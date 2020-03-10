@@ -30,33 +30,35 @@ public class UserWebSocket {
     private static CopyOnWriteArraySet<UserWebSocket> webSocketSet = new CopyOnWriteArraySet<>(); // concurrent包的线程安全Set，用来存放每个客户端对应的UserWebSocket对象。
     private Session session;    // 与某个客户端的连接会话，需要通过它来给客户端发送数据
 
-    public void sendMessage(String message){
+    public void sendMessage(String message) {
         try {
             this.session.getBasicRemote().sendText(message);
             log.info("推送消息成功，消息为：" + message);
-        } catch (IOException e) { e.printStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void sendInfo(String message){
+    public static void sendInfo(String message) {
         for (UserWebSocket productWebSocket : webSocketSet) {
             productWebSocket.sendMessage(message);
         }
     }
 
-   @OnOpen
-    public void onOpen(@PathParam("userId") String userId,Session session) {
-       log.info("新客户端连入，用户id：" + userId);
-       this.session=session;
-       webSocketSet.add(this);
-       OnlineCountUtil.addOnlineCount();
-       if (userId != null){
-           List<String> totalPushMsgs = new ArrayList<>();
-           totalPushMsgs.add(userId+"连接成功-"+"-当前在线人数为："+OnlineCountUtil.getOnlineCount());
-           if(totalPushMsgs != null && !totalPushMsgs.isEmpty()) {
-               totalPushMsgs.forEach(e -> sendMessage(e));
-           }
-       }
-   }
+    @OnOpen
+    public void onOpen(@PathParam("userId") String userId, Session session) {
+        log.info("新客户端连入，用户id：" + userId);
+        this.session = session;
+        webSocketSet.add(this);
+        OnlineCountUtil.addOnlineCount();
+        if (userId != null) {
+            List<String> totalPushMsgs = new ArrayList<>();
+            totalPushMsgs.add(userId + "连接成功-" + "-当前在线人数为：" + OnlineCountUtil.getOnlineCount());
+            if (totalPushMsgs != null && !totalPushMsgs.isEmpty()) {
+                totalPushMsgs.forEach(e -> sendMessage(e));
+            }
+        }
+    }
 
     @OnClose
     public void onClose() {
@@ -67,7 +69,7 @@ public class UserWebSocket {
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        log.info("用户发送过来的消息为："+message);
+        log.info("用户发送过来的消息为：" + message);
     }
 
     @OnError

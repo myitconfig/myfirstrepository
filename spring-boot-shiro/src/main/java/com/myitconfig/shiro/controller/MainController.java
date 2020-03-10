@@ -19,41 +19,42 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class MainController {
-    private Logger log= LoggerFactory.getLogger(MainController.class);
+    private Logger log = LoggerFactory.getLogger(MainController.class);
+
     @RequestMapping("/main")
-    public String index(HttpServletRequest request, HttpServletResponse response){
+    public String index(HttpServletRequest request, HttpServletResponse response) {
         response.setHeader("root", request.getContextPath());
         return "index";
     }
 
     @RequestMapping("/toLogin")
-    public String toLogin(HttpServletRequest request, HttpServletResponse response){
+    public String toLogin(HttpServletRequest request, HttpServletResponse response) {
         response.setHeader("root", request.getContextPath());
         return "login";
     }
 
     @RequestMapping("/login")
-    public String login(HttpServletRequest request, HttpServletResponse response, @RequestParam String username, @RequestParam String password){
+    public String login(HttpServletRequest request, HttpServletResponse response, @RequestParam String username, @RequestParam String password) {
         response.setHeader("root", request.getContextPath());
-        if(!StringUtils.isEmpty(username)){
+        if (!StringUtils.isEmpty(username)) {
             Subject subject = SecurityUtils.getSubject();  // 1.获取Subject
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);  // 2.封装用户数据
-            try{
+            try {
                 subject.login(token); // 3.执行登录方法
                 return "redirect:/main";
-            } catch (UnknownAccountException e){
+            } catch (UnknownAccountException e) {
                 log.info("用户名不存在!");
-                request.setAttribute("msg","用户名不存在！");
-            } catch (IncorrectCredentialsException e){
+                request.setAttribute("msg", "用户名不存在！");
+            } catch (IncorrectCredentialsException e) {
                 log.info("密码错误8");
-                request.setAttribute("msg","密码错误！");
+                request.setAttribute("msg", "密码错误！");
             }
         }
         return "login";
     }
 
     @RequestMapping("/logout")
-    public String logout(){
+    public String logout() {
         Subject subject = SecurityUtils.getSubject();
         if (subject != null) {
             subject.logout();
@@ -62,7 +63,7 @@ public class MainController {
     }
 
     @RequestMapping("/error/unAuth")
-    public String unAuth(){
+    public String unAuth() {
         return "/error/unAuth";
     }
 }

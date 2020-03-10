@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -20,11 +21,13 @@ import java.util.Map;
 @Component
 @EnableConfigurationProperties(MailProperties.class)
 public class JavaMailComponent {
-    private static final Logger log= LoggerFactory.getLogger(JavaMailComponent.class);
-    private @Value("${email.model.name}")String template ; //绑定一个ftl模板
+    private static final Logger log = LoggerFactory.getLogger(JavaMailComponent.class);
+    private @Value("${email.model.name}")
+    String template; //绑定一个ftl模板
     private final FreeMarkerConfigurer freeMarkerConfigurer;
     private final JavaMailSender javaMailSender;
     private final MailProperties mailProperties;
+
     public JavaMailComponent(FreeMarkerConfigurer freeMarkerConfigurer, JavaMailSender javaMailSender, MailProperties mailProperties) {
         this.freeMarkerConfigurer = freeMarkerConfigurer;
         this.javaMailSender = javaMailSender;
@@ -38,18 +41,18 @@ public class JavaMailComponent {
         Map<String, Object> map = new HashMap<>();
         map.put("email", email);
         try {
-                    String text = this.getTextByTemplate(template, map); // 获取.ftl模板
-                    this.send(email, text); // 将信息和模板传入send方法处理
-                    log.warn("发送成功!");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                   log.warn("发送失败!");
-                }
+            String text = this.getTextByTemplate(template, map); // 获取.ftl模板
+            this.send(email, text); // 将信息和模板传入send方法处理
+            log.warn("发送成功!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.warn("发送失败!");
+        }
     }
 
     /**
      * @param template 这是邮件模板.ftl
-     * @param model 这是要给model
+     * @param model    这是要给model
      * @return 返回的模板
      * @throws Exception 抛出异常
      */
@@ -59,8 +62,8 @@ public class JavaMailComponent {
 
     /**
      * @param email email地址
-     * @param text 模板
-     * @throws MessagingException 异常
+     * @param text  模板
+     * @throws MessagingException           异常
      * @throws UnsupportedEncodingException 异常
      */
     private void send(String email, String text) throws MessagingException, UnsupportedEncodingException {

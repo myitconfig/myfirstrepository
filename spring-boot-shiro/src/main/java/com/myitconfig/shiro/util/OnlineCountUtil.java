@@ -10,12 +10,18 @@ import java.util.concurrent.atomic.AtomicInteger;
  **/
 public class OnlineCountUtil {
 
-    private static final AtomicInteger atomicInteger=new AtomicInteger(0);
+    private static final AtomicInteger atomicInteger = new AtomicInteger(0);
 
-    public static synchronized int getOnlineCount() { return atomicInteger.get();}//获得在线人数
+    public static synchronized int getOnlineCount() {
+        return atomicInteger.get();
+    }//获得在线人数
 
-    public static synchronized void addOnlineCount() { atomicInteger.incrementAndGet();}//在线人数+1
+    public static synchronized void addOnlineCount() {
+        atomicInteger.incrementAndGet();
+    }//在线人数+1
 
-    public static synchronized void subOnlineCount() { atomicInteger.decrementAndGet();}//在线人数-1
+    public static synchronized void subOnlineCount() {
+        atomicInteger.decrementAndGet();
+    }//在线人数-1
 
 }

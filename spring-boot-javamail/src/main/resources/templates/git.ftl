@@ -5,6 +5,6 @@
     <title>Git测试页面</title>
 </head>
 <body>
-    <span>这是一个git测试页面</span>
+<span>这是一个git测试页面</span>
 </body>
 </html>

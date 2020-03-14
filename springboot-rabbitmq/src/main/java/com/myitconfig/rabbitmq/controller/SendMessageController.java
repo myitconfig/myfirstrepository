@@ -17,6 +17,7 @@ import java.util.UUID;
  * @author: myitconfig
  * @create: 2020-03-10 19:56
  **/
+//@SuppressWarnings("all")
 @RestController
 public class SendMessageController {
 
@@ -59,7 +60,7 @@ public class SendMessageController {
         womanMap.put("messageId", messageId);
         womanMap.put("messageData", messageData);
         womanMap.put("createTime", createTime);
-        rabbitTemplate.convertAndSend("topicExchange", "topic.woman", womanMap);
+        rabbitTemplate.convertAndSend("topicExchange", "topic.women", womanMap);
         return "ok";
     }
 }

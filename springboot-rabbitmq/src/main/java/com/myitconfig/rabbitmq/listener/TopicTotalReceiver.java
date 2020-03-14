@@ -13,7 +13,7 @@ import java.util.Map;
  * @create: 2020-03-10 22:03
  **/
 @Component
-@RabbitListener(queues = "topic.woman")
+@RabbitListener(queues = "topic.#")
 public class TopicTotalReceiver {
     @RabbitHandler
     public void process(Map testMessage) {

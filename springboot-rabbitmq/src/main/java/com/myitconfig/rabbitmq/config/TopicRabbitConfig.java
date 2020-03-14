@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 public class TopicRabbitConfig {
     //绑定键
     public final static String man = "topic.man";
-    public final static String woman = "topic.woman";
+    public final static String usual = "topic.#";
 
     @Bean
     public Queue firstQueue() {
@@ -26,7 +26,7 @@ public class TopicRabbitConfig {
 
     @Bean
     public Queue secondQueue() {
-        return new Queue(TopicRabbitConfig.woman);
+        return new Queue(TopicRabbitConfig.usual);
     }
 
     @Bean
@@ -46,6 +46,6 @@ public class TopicRabbitConfig {
     // 这样只要是消息携带的路由键是以topic.开头,都会分发到该队列
     @Bean
     Binding bindingExchangeMessage2() {
-        return BindingBuilder.bind(secondQueue()).to(exchange()).with("topic.#");
+        return BindingBuilder.bind(secondQueue()).to(exchange()).with(usual);
     }
 }

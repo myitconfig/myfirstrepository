@@ -1,1 +1,1 @@
-更新springboot整合rabbitmq
+更新springboot整合rabbitmq.

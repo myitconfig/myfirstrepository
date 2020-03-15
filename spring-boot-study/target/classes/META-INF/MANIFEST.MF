@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: 01-spring-boot-study
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Admin
+Implementation-Vendor-Id: com.langsin
+Build-Jdk: 1.8.0_241
+Implementation-URL: http://projects.spring.io/spring-boot/01-spring-bo
+ ot-study/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

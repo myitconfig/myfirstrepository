@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>全体员工</title>
+</head>
+<body>
+	<table border="1">
+	  <thead>
+		<tr>
+		  <td>编号</td>
+		  <td>姓名</td>
+		  <td>年龄</td>
+		  <td>操作</td>
+		</tr>		
+	  </thead>
+	  <tbody>
+	  	<tr th:each="user:${allUsersList}">
+	  		<td th:text="${user.id}"></td>
+	  		<td th:text="${user.name}"></td>
+	  		<td th:text="${user.age}"></td>
+	  		<td>
+	  			<a th:href="@{/users/selectsingleuser(id=${user.id})}">更新用户</a>
+	  			<a th:href="@{/users/deleteuser(id=${user.id})}">删除用户</a>
+	  		</td>
+	  	</tr>
+	  </tbody>
+	</table>
+</body>
+</html>

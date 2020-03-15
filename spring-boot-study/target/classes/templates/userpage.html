@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>民族</th>
+				<th>生日</th>
+				<th>身高</th>
+				<th>体重</th>
+				<th>爱好</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr th:each="u,var :  ${userInfoList0}">
+				<td th:text="${u.userName}"></td>
+				<td th:text="${u.sex}"></td>
+				<td th:text="${u.nation}"></td>
+				<td th:text="${u.birthday}"></td>
+				<td th:text="${u.height}"></td>
+				<td th:text="${u.weight}"></td>
+				<td th:text="${u.personalHobbies}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

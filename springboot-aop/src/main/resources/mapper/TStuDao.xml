@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.aop.dao.TStuDao">
+
+    <resultMap type="com.springboot.aop.entity.TStu" id="TStuMap">
+        <result property="userCode" column="user_code" jdbcType="INTEGER"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="classId" column="class_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TStuMap">
+        select
+          user_code, user_name, class_id
+        from test.t_stu
+        where user_code = #{userCode}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TStuMap">
+        select
+          user_code, user_name, class_id
+        from test.t_stu
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="TStuMap">
+        select
+          user_code, user_name, class_id
+        from test.t_stu
+        <where>
+            <if test="userCode != null">
+                and user_code = #{userCode}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name = #{userName}
+            </if>
+            <if test="classId != null">
+                and class_id = #{classId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="userCode" useGeneratedKeys="true">
+        insert into test.t_stu(user_name, class_id)
+        values (#{userName}, #{classId})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update test.t_stu
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name = #{userName},
+            </if>
+            <if test="classId != null">
+                class_id = #{classId},
+            </if>
+        </set>
+        where user_code = #{userCode}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from test.t_stu where user_code = #{userCode}
+    </delete>
+
+</mapper>

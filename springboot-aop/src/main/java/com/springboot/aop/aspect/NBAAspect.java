@@ -26,15 +26,18 @@ public class NBAAspect {
      * @description  使用环绕通知
      */
     @Around("brokerAspect()")
-    public void doAroundGame(ProceedingJoinPoint pjp) throws Throwable {
+    public Object doAroundGame(ProceedingJoinPoint pjp) throws Throwable {
+        Object url=null;
         try{
-            System.out.println("经纪人正在处理球星赛前事务！");
-            pjp.proceed();
+            System.out.println("经纪人正在处理球星赛前事务!");
+            url= pjp.proceed();
             System.out.println("返回通知：经纪人为球星表现疯狂鼓掌！");
+
         }
         catch(Throwable e){
             System.out.println("异常通知：球迷要求退票！");
         }
+        return url;
     }
 //    /**
 //     * @description  在连接点执行之前执行的通知

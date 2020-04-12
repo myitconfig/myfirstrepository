@@ -49,9 +49,8 @@ public class TStuServiceImpl implements TStuService {
      * @return 实例对象
      */
     @Override
-    public TStu insert(TStu tStu) {
-        this.tStuDao.insert(tStu);
-        return tStu;
+    public int insert(List<TStu> stuList) {
+        return this.tStuDao.insert(stuList);
     }
 
     /**

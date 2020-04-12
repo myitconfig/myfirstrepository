@@ -39,12 +39,14 @@ public interface TStuDao {
     List<TStu> queryAll(TStu tStu);
 
     /**
-     * 新增数据
+     * 新增数据(单条插入,批量插入)
      *
      * @param tStu 实例对象
      * @return 影响行数
      */
-    int insert(TStu tStu);
+//    int insert(TStu tStu);
+    int insert(@Param("stuList") List<TStu> stuList);
+
 
     /**
      * 修改数据

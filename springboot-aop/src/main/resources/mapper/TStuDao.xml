@@ -43,9 +43,14 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="userCode" useGeneratedKeys="true">
+    <insert id="insert" parameterType="java.util.List" keyProperty="userCode" useGeneratedKeys="false">
         insert into test.t_stu(user_name, class_id)
-        values (#{userName}, #{classId})
+        values
+        <foreach collection="stuList" item="item" index="index" separator=",">
+            (#{item.userName}, #{item.classId})
+
+        </foreach>
+
     </insert>
 
     <!--通过主键修改数据-->

@@ -55,4 +55,8 @@ logging:
   pattern:
     console: "%clr(%5p) %clr([%thread]) %clr(%logger{36}){cyan} %clr(:) %clr(%m%n)"
 
-
+freemarker:
+    suffix: .ftl
+    content-type: text/html
+    charset: UTF-8
+    cache: false

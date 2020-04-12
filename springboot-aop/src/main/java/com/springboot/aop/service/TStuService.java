@@ -34,7 +34,7 @@ public interface TStuService {
      * @param tStu 实例对象
      * @return 实例对象
      */
-    TStu insert(TStu tStu);
+    int insert(List<TStu> stuList);
 
     /**
      * 修改数据

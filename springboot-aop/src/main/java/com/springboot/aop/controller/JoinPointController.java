@@ -18,6 +18,7 @@ public class JoinPointController {
 
     @RequestMapping("curry")
     public String curry(@NotNull ModelMap modelMap){
+        modelMap.put("name","库里");
         System.out.println("库里上场打球了!!");
         return "nba";
     }

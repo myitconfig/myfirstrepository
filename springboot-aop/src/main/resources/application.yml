@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.253.128:3306/test?autoReconnect=false&useAffectedRows=true&useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456

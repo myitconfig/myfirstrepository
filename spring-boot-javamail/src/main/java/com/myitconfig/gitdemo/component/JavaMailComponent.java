@@ -17,13 +17,15 @@ import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @author Admin
+ */
 @Component
 @EnableConfigurationProperties(MailProperties.class)
 public class JavaMailComponent {
     private static final Logger log = LoggerFactory.getLogger(JavaMailComponent.class);
-    private @Value("${email.model.name}")
-    String template; //绑定一个ftl模板
+    //绑定一个ftl模板
+    private @Value("${email.model.name}") String template;
     private final FreeMarkerConfigurer freeMarkerConfigurer;
     private final JavaMailSender javaMailSender;
     private final MailProperties mailProperties;
@@ -38,11 +40,13 @@ public class JavaMailComponent {
      * @param email 传入一个邮箱地址
      */
     public void sendMail(String email) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(2);
         map.put("email", email);
         try {
-            String text = this.getTextByTemplate(template, map); // 获取.ftl模板
-            this.send(email, text); // 将信息和模板传入send方法处理
+            // 获取.ftl模板
+            String text = this.getTextByTemplate(template, map);
+            // 将信息和模板传入send方法处理
+            this.send(email, text);
             log.warn("发送成功!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,15 +71,25 @@ public class JavaMailComponent {
      * @throws UnsupportedEncodingException 异常
      */
     private void send(String email, String text) throws MessagingException, UnsupportedEncodingException {
-        MimeMessage message = this.javaMailSender.createMimeMessage();//创建信息
-        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");//格式化信息
-        InternetAddress from = new InternetAddress();  //设置发件人标签
-        from.setAddress(this.mailProperties.getUsername());//发件人邮箱地址
-        from.setPersonal("少不经事", "UTF-8");//发件人昵称
-        helper.setFrom(from); //添加标签
-        helper.setTo(email); //添加收件人
-        helper.setSubject("你好耿志"); //添加主题
-        helper.setText(text, true); //添加模板
-        this.javaMailSender.send(message); //发送信息
+        //创建信息
+        MimeMessage message = this.javaMailSender.createMimeMessage();
+        //格式化信息
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+        //设置发件人标签
+        InternetAddress from = new InternetAddress();
+        //发件人邮箱地址
+        from.setAddress(this.mailProperties.getUsername());
+        //发件人昵称
+        from.setPersonal("少不经事", "UTF-8");
+        //添加标签
+        helper.setFrom(from);
+        //添加收件人
+        helper.setTo(email);
+        //添加主题
+        helper.setSubject("你好耿志");
+        //添加模板
+        helper.setText(text, true);
+        //发送信息
+        this.javaMailSender.send(message);
     }
 }

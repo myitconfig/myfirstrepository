@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("tStu")
-public class TStuController {
+public class StudentInformationController {
     /**
      * 服务对象
      */

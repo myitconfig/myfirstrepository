@@ -41,11 +41,10 @@ public interface TStuDao {
     /**
      * 新增数据(单条插入,批量插入)
      *
-     * @param tStu 实例对象
+     * @param stuList 实例对象集合
      * @return 影响行数
      */
-//    int insert(TStu tStu);
-    int insert(@Param("stuList") List<TStu> stuList);
+      int insert(@Param("stuList") List<TStu> stuList);
 
 
     /**

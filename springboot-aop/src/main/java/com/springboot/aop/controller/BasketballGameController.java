@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("NBA")
-public class JoinPointController {
+public class BasketballGameController {
 
     @RequestMapping("curry")
     public String curry(@NotNull ModelMap modelMap){
@@ -37,6 +37,5 @@ public class JoinPointController {
     public void durant(){
         System.out.println("杜兰特上场打球了!!");
     }
-
 
 }

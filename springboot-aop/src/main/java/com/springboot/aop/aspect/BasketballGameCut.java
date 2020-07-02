@@ -13,14 +13,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class NBAAspect {
+public class BasketballGameCut {
 
     /**
      * 定义切入点，切入点为com.example.demo.aop.AopController中的所有函数
      *通过@Pointcut注解声明频繁使用的切点表达式
      */
-    @Pointcut("execution( public * com.springboot.aop.controller.JoinPointController.*(..))")
-//    @Pointcut("@annotation(com.)")
+    @Pointcut("execution( public * com.springboot.aop.controller.BasketballGameController.*(..))")
     public void brokerAspect(){}
     /**
      * @description  使用环绕通知
